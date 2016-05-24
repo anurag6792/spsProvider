@@ -1,0 +1,98 @@
+/* Empty. Add your own CSS if you like */
+/* LOGIN*/
+.login-background{
+    background-image: url("../img/bg.png");
+    background-position: center;
+    background-origin: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.login-container {
+    position: absolute;
+        top: 55%;
+}
+.login-username{
+   margin: 5px 2px;
+   border-radius: 40px; 
+}
+.login-password{
+  margin: 5px 2px;
+  border-radius: 40px;  
+}
+.login-username .icon , .login-password .icon{
+   color: #00C398;
+   font-size: 24px;    
+}
+
+.login-button{
+    border-radius:40px;
+    background-color: #00C398;
+    color: #ffffff;
+}
+.login-register{
+/*
+    position: absolute;
+    bottom: 0;
+*/
+    text-align: center;
+}
+.login-register p{
+    color: #ffffff;
+    display: inline;
+    font-size: 18px;
+}
+.login-register a{
+    color: #00C398;
+    font-size: 18px;
+}
+.login-errors{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+.login-errors span{
+    color: #fff;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+}
+/*SIDEMENU*/
+.sidemenu{
+    background-color: #34373C;
+}
+.sidemenu .list{
+    background-color: transparent;
+}
+.sidemenu .list .item{
+    background-color: transparent;
+    border-color: transparent;
+    color: #ffffff;
+/*    margin-bottom: 5px;*/
+    border-top: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+    -webkit-box-shadow: 1px 1px 0px -1px #222222;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:1px 1px 0px -1px #222222; /* Firefox 3.5 - 3.6 */
+    box-shadow:1px 1px 0px -1px #222222; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+
+}
+.sidemenu .list .item-icon-left .icon{
+    font-size: 25px;
+}
+.sidemenu .list .item h2{
+    color: #ffffff;
+}
+.sidemenu .list .item p{
+    color: #ffffff;
+}
+.sidemenu-profile{
+    padding-bottom: 30px;
+    padding-top: 35px;
+    text-align: center;
+    background-color: #272C30!important;
+    border: 0;
+}
+.sidemenu-profile img{
+    max-width: 100px;
+    max-height: 100px;
+}
