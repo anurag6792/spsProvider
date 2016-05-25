@@ -1,0 +1,24 @@
+<ion-view  view-title="Service" ng-controller="ViewserviceCtrl" class="viewservice"> 
+<ion-header-bar align-title="center" class="common-header">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <h1 class="title">Service</h1>
+</ion-header-bar>
+<ion-content class="has-header">
+     <div class="card">
+      <div class="item item-divider">
+        {{jobrequestDetails.JobName}}
+      </div>
+      <div class="item item-text-wrap">
+        
+        <p><label class="request-label">Registered At</label>:<span am-time-ago="jobrequestDetails.CreatedDate"></span></p>
+        <p><label class="request-label">Expected Date At</label>:<span am-time-ago="jobrequestDetails.CustomerExpectedDate"></span></p>
+        <p><label class="request-label">Status</label>:<span>{{ jobrequestDetails.JobStatus == 0 ? 'pending' : 'completed' }}</span> </p>
+        <p>{{jobrequestDetails.JobDetails}}  </p>
+      </div>
+      <div class="item item-text-wrap">
+        <img ng-repeat="image in jobrequestDetails.JobImage" ng-src="image">
+      </div>     
+      </div>
+          
+</ion-content>    
+</ion-view>    

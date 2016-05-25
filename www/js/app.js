@@ -1,4 +1,4 @@
-var app = angular.module('SPSProvider', ['ionic','ngMessages','LocalStorageModule']);
+var app = angular.module('SPSProvider', ['ionic','ngMessages','LocalStorageModule','angularMoment']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -39,6 +39,42 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
           templateUrl: "templates/dashboard.html"
         }
       }
+    })
+    .state('app.services',{
+        url: '/services',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/services.html"
+        }
+      }
+    })
+    .state('app.viewservices',{
+        url: '/viewservice',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/viewservice.html"
+        }
+      }
+    })
+    .state('app.profile',{
+        url: '/profile',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/userprofile.html"
+        }
+      }
+    })
+    .state('app.editprofile',{
+        url: '/editprofile',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/editprofile.html"
+        }
+      }
     });
     $urlRouterProvider.otherwise('/login');
 }]);
@@ -51,3 +87,27 @@ app.run(['$rootScope', 'userAuth', '$state',function ($rootScope, userAuth, $sta
         }
       });
     }]);
+// Directive to confirm password for the new user
+app.directive('validPasswordC', function() {
+  return {
+    require: 'ngModel',
+    scope: {
+
+      reference: '=validPasswordC'
+
+    },
+    link: function(scope, elm, attrs, ctrl) {
+      ctrl.$parsers.unshift(function(viewValue, $scope) {
+
+        var noMatch = viewValue != scope.reference
+        ctrl.$setValidity('noMatch', !noMatch);
+        return (noMatch)?noMatch:!noMatch;
+      });
+
+      scope.$watch("reference", function(value) {;
+        ctrl.$setValidity('noMatch', value === ctrl.$viewValue);
+
+      });
+    }
+  }
+});

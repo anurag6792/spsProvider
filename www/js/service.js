@@ -29,12 +29,12 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         
     };
     
-    //Function to get the user details
+    //Function to get the Provider details
     function userDetails(userid) {
         console.log("In service user details function");
         var deferredObject = $q.defer();
         $http({
-                url    : 'http://ecomdemo.cloudapp.net:8888/api/User/CustomerDetails',
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/User/GetSPDetails',
                 method : 'POST',
                 params   : {'id' : userid  },
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -57,6 +57,49 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         
     };
     
+     //Function to edit provider details
+    function edituserDetails(userdetails,userprofile) {
+        console.log("In service login function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/User/UpdateUser',
+                method : 'POST',
+                data   : {    
+                                "Contact": userdetails.mobile,
+                                "DateOfBirth":userdetails.dob,
+                                "EmailId": userdetails.email,
+                                "FirstName": userdetails.firstname,
+                                "MiddleName": userdetails.middlename,
+                                "LastName": userdetails.lastname,
+                                "Gender": userdetails.gender,
+                                "UserId": userprofile.description.UserId,
+                                "UserName":userdetails.mobile,
+                                "Password":userdetails.newpassword,
+                                "RoleId": 3,
+                                "IsVerified":'true',
+                                "RecordStatus":0,
+                                "ModifiedBy": 3,
+                                "IsFirstTimeLogin": "No"
+                         },
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("Edit User details API successfully called");
+                    console.log(response);
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
      // Function to check whether user is logged in or not
     function isLoggedIn(){
         return localStorageService.get('logged');
@@ -72,7 +115,8 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         login : login,
         userDetails : userDetails,
         isLoggedIn : isLoggedIn,
-        destroyUser : destroyUser
+        destroyUser : destroyUser,
+        edituserDetails : edituserDetails
     };
     
 
