@@ -100,6 +100,34 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         return deferredObject.promise;       
         
     };
+    
+    //Function to view all the feedbacks of the customers
+    function feedbacks(userID){
+        console.log("In service addaddress function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/feedback/ShowAllCustomerFeedbacksToSP',
+                method : 'POST',
+                params   : {"id": userID},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("show provider feedbacks API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                    console.log("show provider feedbacks API was not successfully called");
+                    deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    }
      // Function to check whether user is logged in or not
     function isLoggedIn(){
         return localStorageService.get('logged');
