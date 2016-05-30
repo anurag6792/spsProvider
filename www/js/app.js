@@ -1,4 +1,4 @@
-var app = angular.module('SPSProvider', ['ionic','ngMessages','LocalStorageModule','angularMoment']);
+var app = angular.module('SPSProvider', ['ionic','ionic.service.core','ngMessages','LocalStorageModule','angularMoment']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -15,9 +15,33 @@ app.run(function($ionicPlatform) {
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+    window.addEventListener('native.keyboardshow', function(){
+    document.body.classList.add('keyboard-open');
+    });    
   });
 });
-
+app.run(function($ionicPlatform,localStorageService) {
+  $ionicPlatform.ready(function() {
+    var push = new Ionic.Push({
+      "debug": true,
+      "onNotification": function(notification) {
+                        var payload = notification.payload;
+                        console.log(notification, payload);
+                      },    
+      "onRegister": function(data) {
+                    console.log(data.token);
+                    alert(data.token);
+                    localStorageService.set('DeviceToken',data.token);
+                    }    
+    });
+ 
+    push.register(function(token) {
+      console.log("My Device token:",token.token);
+      alert("My Device token:"+token.token);
+      push.saveToken(token);  // persist the token in the Ionic Platform
+    });
+  });
+});
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     
     $stateProvider
@@ -49,8 +73,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         }
       }
     })
-    .state('app.viewservices',{
-        url: '/viewservice',
+    .state('app.viewservice',{
+        url: '/viewservice/:jobID',
         cache:false,
         views: {
         'sidemenuContent' :{

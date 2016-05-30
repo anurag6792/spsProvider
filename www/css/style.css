@@ -1,4 +1,15 @@
 /* Empty. Add your own CSS if you like */
+.spinner svg {
+  width: 28px;
+  height: 28px;
+  stroke: #08f274;
+  fill: #08f274;
+/*  background-color: aquamarine;    */
+}
+
+.main-content{
+    background-color: #f7f7f7;
+}
 .button-mybuttoncolor{
     background-color: #00C398;
     color: #ffffff;
@@ -110,6 +121,45 @@
     max-width: 100px;
     max-height: 100px;
 }
+
+/*Dashboard*/
+.dashboard{
+    background-image: url("../img/dashbg.png");
+    background-position: center;
+    background-origin: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin:0;
+}
+.profileInfo{
+    height: 190px;
+    
+}
+.profileInfo .profilePic{
+    width: 70px;
+    height: 70px;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.profileInfo p{
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+.profileInfo h3{
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 /*User Profile*/
 .profile{
         background-color: #FFFFFF;
@@ -165,7 +215,7 @@
     color: #00c398;
 }
 /* View Service*/
-.viewrequests .card .item-divider{
+.viewservice .card .item-divider{
     background-color: #00c398;
     color: #fff;
     font-size: 20px;

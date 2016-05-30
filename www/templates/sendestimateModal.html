@@ -1,0 +1,31 @@
+<ion-modal-view >
+  <ion-header-bar align-title="center" class="common-header">
+    <h1 class="title">Send Estimate</h1>
+     <button class="button button-icon icon ion-close" ng-click="modal.hide()"></button>    
+  </ion-header-bar>
+  <ion-content class="padding main-content">
+    <div class="card">
+      <div class="item item-text-wrap">
+        <div class="list">
+<!--
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Subject</span>
+            <input type="text" >
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Details</span>
+           <textarea placeholder="Please Enter the details" name="estimateDetails"  class="input-control"></textarea>
+          </label>
+-->
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Amount in Ruppees</span>
+            <input type="text" ng-model="estimate.amount">
+          </label>
+        </div>
+      </div>
+      <div class="item item-divider">
+         <button class="button button-block button-mybuttoncolor" ng-click="sendEstimate(estimate);">Send Estimate</button>
+      </div>    
+    </div>
+  </ion-content>
+</ion-modal-view>

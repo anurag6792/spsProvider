@@ -17,6 +17,11 @@ app.controller("LoginCtrl",[
                      $ionicLoading.hide();
                   };
         
+        
+        if(localStorageService.get('logged') && (localStorageService.get('userID') != null)){
+        $state.go('app.dashboard');
+        }
+        else {
         $scope.login = function(user){
         var result = userAuth.login(user.username,user.password);//passing username and password to the login fnc in service
         $scope.show();    
@@ -25,6 +30,22 @@ app.controller("LoginCtrl",[
                 if (response.success == "true") {
                     $scope.hide();
                     console.log('In LoginCtrl : successful login');
+                    $scope.usesId = localStorageService.get('userID'); 
+                    $scope.token = localStorageService.get('DeviceToken'); 
+                    var sendtoken = userAuth.sendToken($scope.usesId,$scope.token);
+                    sendtoken.then(function (response) {
+                        console.log(response);
+                        if (response.success == "true"){
+                            console.log('Device Token sent successfully');
+                        } 
+                        else if (response.success == "false"){
+                            console.log('Device Token was not sent successfully');
+                        }
+                        else{
+                            console.log('Some error was there in sending device token');
+                        }
+                    });
+                    
                     $state.go('app.dashboard'); // redirecting to the dashboard page
                     //userAuth.userInfo(response);
                 }
@@ -58,5 +79,5 @@ app.controller("LoginCtrl",[
 
         };
     
-        
+        }
 }]);
