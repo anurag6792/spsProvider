@@ -235,3 +235,10 @@
 .viewservice .card .item-text-wrap span{
     padding: 0 10px;
 }
+
+/* Estimates*/
+.estimates h4{
+   text-align: center;
+    font-size: 18px;
+    color: #00c398; 
+}

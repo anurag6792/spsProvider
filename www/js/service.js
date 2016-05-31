@@ -82,14 +82,14 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         return deferredObject.promise;       
         
     };
-    //Function to view single job requests using jobid & user Id
-    function viewsinglejobrequest(userID,jobID) {
+    //Function to view single job requests using jobreqid
+    function viewsinglejobrequest(jobreqid) {
         console.log("In service viewjobrequests function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/job/ShowOfferedJobDetailsToSP',
                 method : 'POST',
-                params   : {"spid": userID , jid : jobID},
+                params   : {jobreqid : jobreqid},
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {
                   var str = [];
@@ -99,6 +99,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                 }})
                .success(function(response){
                     console.log("View single Job requests API successfully called");
+                    console.log(response);
                     deferredObject.resolve(response);
                 })
                .error(function(error){
@@ -138,6 +139,61 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         return deferredObject.promise;       
         
     };
+     //Function to view all job estimates sent from the provider
+    function viewallsentjobestimates(userId) {
+        console.log("In service viewjobrequests function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/job/showSentJobQuotationsFromSP',
+                method : 'POST',
+                data   : {spid : userId},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("view all sent  job estimates API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
+    
+     //Function to view single job estimates sent from the provider
+    function viewsinglesentjobestimates(userId) {
+        console.log("In service viewjobrequests function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/job/showSentJobQuotationDetailsToSP',
+                method : 'POST',
+                data   : {jobresid : userId},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("view all sent  job estimates API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
+    
+    
     //Function to get the Provider details
     function userDetails(userid) {
         console.log("In service user details function");
@@ -258,7 +314,9 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         isLoggedIn : isLoggedIn,//function to check whether the user is logged in or not
         destroyUser : destroyUser,// function to destroy userdetails stored in loacal storage
         edituserDetails : edituserDetails, //function to edit user details
-        sendestimates : sendestimates
+        sendestimates : sendestimates, //Function to send estimates to the operator
+        viewallsentjobestimates : viewallsentjobestimates, //Function to view all sent job estimates from provider
+        viewsinglesentjobestimates : viewsinglesentjobestimates //Function to view single sent job estimates from provider
     };
     
 

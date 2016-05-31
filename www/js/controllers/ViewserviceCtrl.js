@@ -17,7 +17,7 @@ app.controller('ViewserviceCtrl',['$scope','$stateParams','localStorageService',
         $scope.modal.hide();
       };
     $scope.userId =  localStorageService.get('userID'); // get userid from the local storage
-    $scope.jobid = $stateParams.jobID; //get jobid from the state params
+    $scope.jobreqid = $stateParams.JobRequestId; //get jobid from the state params
     $scope.jobrequestDetails = {}; 
     $scope.addressDetails = {};
     $scope.show = function() {
@@ -29,7 +29,7 @@ app.controller('ViewserviceCtrl',['$scope','$stateParams','localStorageService',
     $scope.hide = function(){
                      $ionicLoading.hide();
                   };
-    var viewjobrequest = userAuth.viewsinglejobrequest($scope.userId,$scope.jobid);
+    var viewjobrequest = userAuth.viewsinglejobrequest($scope.jobreqid);
     
     $scope.show();
     viewjobrequest.then(function (response) {

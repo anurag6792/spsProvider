@@ -74,11 +74,20 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       }
     })
     .state('app.viewservice',{
-        url: '/viewservice/:jobID',
+        url: '/viewservice/:JobRequestId',
         cache:false,
         views: {
         'sidemenuContent' :{
           templateUrl: "templates/viewservice.html"
+        }
+      }
+    })
+    .state('app.estimates',{
+        url: '/estimates',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/estimates.html"
         }
       }
     })
