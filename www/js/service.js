@@ -173,7 +173,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/job/showSentJobQuotationDetailsToSP',
                 method : 'POST',
-                data   : {jobresid : userId},
+                params   : {jobresid : userId},
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {
                   var str = [];

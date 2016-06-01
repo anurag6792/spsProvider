@@ -19,7 +19,7 @@
         </div>
                 
         <ion-list ng-show='showEstimate'>
-          <ion-item  ng-repeat="estimates in jobestimates | orderBy:'JOB.CreatedDate':true | filter:{JOB: {JobName: searchestimates}}" class=" item-icon-right" ui-sref='app.viewservice({ jobID: requests.JobId})' >
+          <ion-item  ng-repeat="estimates in jobestimates | orderBy:'JOB.CreatedDate':true | filter:{JOB: {JobName: searchestimates}}" class=" item-icon-right" ui-sref='app.viewestimates({ JobRequestId: estimates.JobRequestId})' >
             <h2>{{estimates.JOB.JobName}}</h2>
             <p>Status : {{ estimates.JobStatus == 0 ? 'pending' : 'completed' }}</p>
             <span am-time-ago="requests.JOB.CreatedDate"></span>  

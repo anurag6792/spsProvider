@@ -91,6 +91,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         }
       }
     })
+    .state('app.viewestimates',{
+        url: '/viewestimates/:JobRequestId',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/viewestimates.html"
+        }
+      }
+    })
     .state('app.profile',{
         url: '/profile',
         cache:false,

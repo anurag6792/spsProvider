@@ -1,0 +1,38 @@
+<ion-view  view-title="Estimate" ng-controller="ViewestimateCtrl" class="viewestimate"> 
+<ion-header-bar align-title="center" class="common-header">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+      <h1 class="title">Estimate</h1>
+</ion-header-bar>
+<ion-content class="has-header main-content">
+     <div class="card">
+      <div class="item item-divider">
+        {{jobestimateDetails.JOB.JobName}}
+      </div>
+      <div class="item item-text-wrap">
+        
+        <p><label class="request-label">Registered At</label>:<span am-time-ago="jobestimateDetails.JOB.CreatedDate"></span></p>
+        <p><label class="request-label">Expected Date At</label>:<span am-time-ago="jobestimateDetails.JOB.CustomerExpectedDate"></span></p>
+        <p><label class="request-label">Status</label>:<span>{{ jobestimateDetails.JOB.JobStatus == 0 ? 'pending' : 'completed' }}</span> </p>
+        <p><label class="request-label">Addess</label>:</p>
+        <p>{{jobestimateDetails.JOB.UserAddress.AddressLine1}} , {{jobestimateDetails.JOB.UserAddress.AddressLine2}} ,{{jobestimateDetails.JOB.UserAddress.City}} ,{{jobestimateDetails.JOB.UserAddress.State}} ,{{jobestimateDetails.JOB.UserAddress.Zip}} ,{{jobestimateDetails.JOB.UserAddress.Country}}</p>  
+        <p><label class="request-label">Details</label>:</p>
+        <p>{{jobestimateDetails.JOB.JobDetails}}  </p>
+        <p><label class="request-label">Estimate Sent</label>:<span>{{ jobestimateDetails.ServiceProviderAmount }}</span> </p>
+        
+      </div>
+      <div class="item item-text-wrap">
+        <img ng-repeat="image in jobrequestDetails.JobImage" ng-src="image">
+      </div>     
+      </div>
+<!--
+      <div class="row">
+         <div class="col col-50">
+         <button class="button button-block button-mybuttoncolor" ng-click="modal.show();">Send Estimate</button>
+         </div>       
+         <div class="col col-50">
+             <button class="button button-block button-mybuttoncolor" ui-sref='app.services'>Cancel</button> 
+         </div>       
+      </div>    
+-->
+</ion-content>    
+</ion-view>    

@@ -18,7 +18,7 @@ app.controller('ServiceCtrl',['$scope','userAuth','localStorageService','$filter
     var viewjobrequests = userAuth.viewjobrequests($scope.userID);
      $scope.show();
     viewjobrequests.then(function (response) {
-            if (response.success == "true") {
+            if (response.success == "true" && response.description.length > 0) {
                 $scope.hide();
                 console.log(response);
                 $scope.showRequest = response.success ;
@@ -27,7 +27,7 @@ app.controller('ServiceCtrl',['$scope','userAuth','localStorageService','$filter
                 
                 }
              else if(response.success == "false") {
-                $scope.showRequest = response.success ; 
+                $scope.showRequest = false ; 
                 $scope.hide(); 
                 console.log('In ServiceCtrl : view requests unsuccessful'); 
                 }

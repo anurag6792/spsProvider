@@ -242,3 +242,31 @@
     font-size: 18px;
     color: #00c398; 
 }
+
+/* View Estimates*/
+.viewestimate .card .item-divider{
+    background-color: #00c398;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+.viewestimate .card .item-text-wrap .request-label{
+    width: 50%;
+    display: inline-block;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+}
+.viewestimate .card .item-text-wrap p{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.viewestimate .card .item-text-wrap span{
+    padding: 0 10px;
+}
+/* Send Feedback*/
+ .ratings{
+    text-align: center;
+    color: #f0df0f;
+    font-size: 40px;
+}
