@@ -6,7 +6,9 @@
   fill: #08f274;
 /*  background-color: aquamarine;    */
 }
-
+.scroll {
+  height: 100%;
+}
 .main-content{
     background-color: #f7f7f7;
 }
