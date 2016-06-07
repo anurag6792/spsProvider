@@ -30,14 +30,12 @@ app.run(function($ionicPlatform,localStorageService) {
                       },    
       "onRegister": function(data) {
                     console.log(data.token);
-                    alert(data.token);
                     localStorageService.set('DeviceToken',data.token);
                     }    
     });
  
     push.register(function(token) {
       console.log("My Device token:",token.token);
-      alert("My Device token:"+token.token);
       push.saveToken(token);  // persist the token in the Ionic Platform
     });
   });

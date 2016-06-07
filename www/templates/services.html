@@ -21,7 +21,13 @@
         <ion-list ng-show='showRequest'>
           <ion-item  ng-repeat="requests in jobrequests | orderBy:'JOB.CreatedDate':true | filter:{JOB: {JobName: searchrequest}}" class=" item-icon-right" ui-sref='app.viewservice({ JobRequestId: requests.JobRequestId})' >
             <h2>{{requests.JOB.JobName}}</h2>
-            <p>Status : {{ requests.JobStatus == 0 ? 'pending' : 'completed' }}</p>
+            <p>Status : {{requests.JOB.JobStatus}}</p>
+<!--
+            <p ng-if="requests.JobStatus == 1">Status : Pending</p>
+            <p ng-if="requests.JobStatus == 2">Status : Approved</p>
+            <p ng-if="requests.JobStatus == 3">Status : Rejected</p>
+            <p ng-if="requests.JobStatus == 4">Status : Processed</p>
+-->
             <span am-time-ago="requests.JOB.CreatedDate"></span>  
 <!--            <a class="subdued">Service Created On :{{requests.JOB.CreatedDate | amDateFormat:'MM.DD.YYYY'}}</a> -->
             <i class="icon ion-chevron-right"></i>

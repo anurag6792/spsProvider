@@ -110,16 +110,17 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         
     };
     //Function to send estimates
-    function sendestimates(JobId,CustomerId,ServiceProviderId,amount) {
+    function sendestimates(JobId,CustomerId,ServiceProviderId,amount,jobrequestid) {
         console.log("In service viewjobrequests function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/job/SendJobQuotationFromSP',
                 method : 'POST',
-                data   : {    "JobId": JobId,
+                data   : {      "JobId": JobId,
                                 "CustomerId": CustomerId,
                                 "ServiceProviderID" : ServiceProviderId,
-                                "ServiceProviderAmount" : amount
+                                "ServiceProviderAmount" : amount,
+                                "JobRequestId" : jobrequestid
                            },
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {
