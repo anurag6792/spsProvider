@@ -305,6 +305,9 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         localStorageService.set('logged',false);
        // localStorageService.set('DeviceToken',null);
     }
+    
+    
+    
     return {
       
         login : login,//login function where the login API is called

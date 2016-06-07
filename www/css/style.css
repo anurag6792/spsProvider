@@ -8,14 +8,10 @@
 }
 /*popup header*/
 .popup-head {
-
-    background-color: #45DCBB;
-    
+  background-color: #45DCBB;
 }
 .popup-title {
-
-    color: #fff;
-
+  color: #fff;
 }
 .content-scroll{
     overflow: auto;
