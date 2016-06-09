@@ -98,6 +98,33 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         }
       }
     })
+    .state('app.approvedservices',{
+        url: '/approvedservices',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/approvedservices.html"
+        }
+      }
+    })
+    .state('app.viewapprovedservice',{
+        url: '/viewapprovedservice/:JobRequestId',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/viewapprovedservice.html"
+        }
+      }
+    })
+    .state('app.viewapprovedservices',{
+        url: '/viewapprovedservices/:JobRequestId',
+        cache:false,
+        views: {
+        'sidemenuContent' :{
+          templateUrl: "templates/viewapprovedservices.html"
+        }
+      }
+    })
     .state('app.profile',{
         url: '/profile',
         cache:false,

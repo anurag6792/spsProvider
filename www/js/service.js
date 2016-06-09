@@ -194,6 +194,32 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         
     };
     
+     //Function to view all the job requests
+    function viewapprovedjobrequests(userID) {
+        console.log("In service viewjobrequests function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/showAllApprovedJobsForSP',
+                method : 'POST',
+                params   : {"spid": userID},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("View All Approved Job requests API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                             deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
     
     //Function to get the Provider details
     function userDetails(userid) {
@@ -320,7 +346,8 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         edituserDetails : edituserDetails, //function to edit user details
         sendestimates : sendestimates, //Function to send estimates to the operator
         viewallsentjobestimates : viewallsentjobestimates, //Function to view all sent job estimates from provider
-        viewsinglesentjobestimates : viewsinglesentjobestimates //Function to view single sent job estimates from provider
+        viewsinglesentjobestimates : viewsinglesentjobestimates, //Function to view single sent job estimates from provider
+        viewapprovedjobrequests : viewapprovedjobrequests //Function to view all the approved job requests
     };
     
 

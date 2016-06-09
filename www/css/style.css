@@ -333,3 +333,30 @@
     color: #f0df0f;
     font-size: 40px;
 }
+/*Approved Services*/
+.approvedservices h4{
+    text-align: center;
+    font-size: 18px;
+    color: #45DCBB;
+}
+/* View Service*/
+.viewapprovedservice .card .item-divider{
+    background-color: #45DCBB;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+.viewapprovedservice .card .item-text-wrap .request-label{
+    width: 50%;
+    display: inline-block;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+}
+.viewapprovedservice .card .item-text-wrap p{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.viewapprovedservice .card .item-text-wrap span{
+    padding: 0 10px;
+}
