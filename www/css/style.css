@@ -175,7 +175,23 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
-
+.dash{
+    padding-top: 30px!important;
+    padding-bottom: 35px!important;
+}
+.dash .dash-block{
+    text-align: center;
+    background-color: rgba(69, 220, 187, 0.62);
+    border-radius: 5%;
+}
+.dash .dash-block i{
+    font-size: 60px;
+    color: #fff;
+}
+.dash .dash-block p{
+    font-size: 20px;
+    color: #fff;
+}
 /*User Profile*/
 /*User Profile*/
 .profile{
@@ -203,7 +219,7 @@
 }
 .profile .col .list .item h2{
     color: #ffffff;
-    font-size: 25px;
+    font-size: 22px;
     margin-left: 15px;
 }
 .profile .col .list .item p{
@@ -228,6 +244,32 @@
     font-size: 13px;
 }.profileDetails .item-note{
     font-size: 16px;
+}
+/* Edit Profile*/
+.editprofile .item-stacked-label{
+    padding-left: 2px;
+}
+.editprofile .input-label {
+    color: #45DCBB;
+    font-size: 16px;
+    padding-left: 6px;
+    padding-bottom: 5px;
+}
+.editprofile .item-stacked-label input{
+    padding-left: 6px;
+    border: 1px solid #ddd;
+}
+.editprofile .item-stacked-label select{
+    width: 100%;
+    display: block;
+    padding-top: 2px;
+    height: 34px;
+    color: #111;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 2px;
+    padding: 4px 8px 3px 0;
 }
 /*Services*/
 .services h4{

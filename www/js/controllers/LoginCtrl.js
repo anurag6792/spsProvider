@@ -27,7 +27,7 @@ app.controller("LoginCtrl",[
         $scope.show();    
         result.then(function (response) {
 
-                if (response.success == "true") {
+                if (response.success == "true" && response.description.RoleId == '4') {
                     $scope.hide();
                     console.log('In LoginCtrl : successful login');
                     $scope.usesId = localStorageService.get('userID'); 
