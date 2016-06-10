@@ -31,7 +31,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     
      // Function to send Device Token
     function sendToken(userId , token) {
-        console.log("In service login function");
+        console.log("In service sendToken function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/user/SaveDeviceDetails',
@@ -84,7 +84,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     };
     //Function to view single job requests using jobreqid
     function viewsinglejobrequest(jobreqid) {
-        console.log("In service viewjobrequests function");
+        console.log("In service viewsinglejobrequest function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/job/ShowOfferedJobDetailsToSP',
@@ -111,7 +111,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     };
     //Function to send estimates
     function sendestimates(JobId,CustomerId,ServiceProviderId,amount,jobrequestid) {
-        console.log("In service viewjobrequests function");
+        console.log("In service send estimates function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/job/SendJobQuotationFromSP',
@@ -142,12 +142,12 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     };
      //Function to view all job estimates sent from the provider
     function viewallsentjobestimates(userId) {
-        console.log("In service viewjobrequests function");
+        console.log("In service view all sent jobe stimates function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/job/showSentJobQuotationsFromSP',
                 method : 'POST',
-                data   : {spid : userId},
+                params   : {spid : userId},
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {
                   var str = [];
@@ -169,7 +169,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     
      //Function to view single job estimates sent from the provider
     function viewsinglesentjobestimates(userId) {
-        console.log("In service viewjobrequests function");
+        console.log("In service view single sent job estimates function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/job/showSentJobQuotationDetailsToSP',
@@ -183,7 +183,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
                   return str.join("&");
                 }})
                .success(function(response){
-                    console.log("view all sent  job estimates API successfully called");
+                    console.log("view sent  job estimate details API successfully called");
                     deferredObject.resolve(response);
                 })
                .error(function(error){
@@ -196,7 +196,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     
      //Function to view all the job requests
     function viewapprovedjobrequests(userID) {
-        console.log("In service viewjobrequests function");
+        console.log("In service view approved job requests function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/showAllApprovedJobsForSP',
@@ -295,7 +295,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
     
     //Function to view all the feedbacks of the customers
     function feedbacks(userID){
-        console.log("In service addaddress function");
+        console.log("In service feedbacks function");
         var deferredObject = $q.defer();
         $http({
                 url    : 'http://ecomdemo.cloudapp.net:8888/api/feedback/ShowAllCustomerFeedbacksToSP',
@@ -331,10 +331,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter',function($q
         localStorageService.set('logged',false);
        // localStorageService.set('DeviceToken',null);
     }
-    
-    
-    
-    return {
+     return {
       
         login : login,//login function where the login API is called
         sendToken: sendToken,// function to send device token

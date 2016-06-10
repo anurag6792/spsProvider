@@ -19,9 +19,9 @@
         </div>
                 
         <ion-list ng-show='showEstimate'>
-          <ion-item  ng-repeat="estimates in jobestimates | orderBy:'JOB.CreatedDate':true | filter:{JOB: {JobName: searchestimates}}" class=" item-icon-right" ui-sref='app.viewestimates({ JobRequestId: estimates.JobRequestId})' >
+          <ion-item  ng-repeat="estimates in jobestimates | orderBy:'JOB.CreatedDate':true | filter:{JOB: {JobName: searchestimates}}" class=" item-icon-right" ui-sref='app.viewestimates({ JobRequestId: estimates.JobResponseId})' >
             <h2>{{estimates.JOB.JobName}}</h2>
-            <p>Status : {{ estimates.JobStatus == 0 ? 'pending' : 'completed' }}</p>
+            <p>Status : {{ estimates.JobStatus}}</p>
             <span am-time-ago="requests.JOB.CreatedDate"></span>  
 <!--            <a class="subdued">Service Created On :{{requests.JOB.CreatedDate | amDateFormat:'MM.DD.YYYY'}}</a> -->
             <i class="icon ion-chevron-right"></i>

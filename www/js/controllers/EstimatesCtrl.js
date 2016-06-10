@@ -14,7 +14,7 @@ app.controller('EstimatesCtrl',['$scope','userAuth','localStorageService','$ioni
     console.log('Added consumer userID  to the RequestCtrl in userID ') ;
     
     $scope.jobestimates = [];
-    var viewjobestimates = userAuth.viewjobrequests($scope.userID);
+    var viewjobestimates = userAuth.viewallsentjobestimates($scope.userID);
     $scope.show();
     viewjobestimates.then(function (response) {
             if (response.success == "true") {
