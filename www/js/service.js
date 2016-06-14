@@ -331,6 +331,73 @@ app.service("userAuth",['$q','$http','localStorageService','$filter','$httpParam
         localStorageService.set('logged',false);
        // localStorageService.set('DeviceToken',null);
     }
+    
+    //Function to start job by provider
+    function startjob(jobid,customerid,spid,lat,long) {
+        console.log("In service user details function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/saveTrackingDetails',
+                method : 'POST',
+                params   : {
+                                "JobId": jobid,
+                                "CustomerId": customerid,
+                                "ServiceProviderId": spid,
+                                "Latitude":lat,
+                                "Longitude": long
+                            },
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("Start job API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                    console.log("Start job API was unsuccessful");
+                    deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
+    
+    //Function to stop job by provider
+    function stopjob(trackid,spid) {
+        console.log("In service user details function");
+        var deferredObject = $q.defer();
+        $http({
+                url    : 'http://ecomdemo.cloudapp.net:8888/api/Job/updateTrackingDetails',
+                method : 'POST',
+                params   : {
+                                "TrackId": trackid,
+                                "ServiceProviderId": spid
+                            },
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                transformRequest: function(obj) {
+                  var str = [];
+                  for(var p in obj)
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                  return str.join("&");
+                }})
+               .success(function(response){
+                    console.log("Stop Job API successfully called");
+                    deferredObject.resolve(response);
+                })
+               .error(function(error){
+                    console.log("Stop Job API was unsuccessful");
+                    deferredObject.reject(response);
+                });
+        
+        return deferredObject.promise;       
+        
+    };
+    
+    
      return {
       
         login : login,//login function where the login API is called
@@ -344,7 +411,9 @@ app.service("userAuth",['$q','$http','localStorageService','$filter','$httpParam
         sendestimates : sendestimates, //Function to send estimates to the operator
         viewallsentjobestimates : viewallsentjobestimates, //Function to view all sent job estimates from provider
         viewsinglesentjobestimates : viewsinglesentjobestimates, //Function to view single sent job estimates from provider
-        viewapprovedjobrequests : viewapprovedjobrequests //Function to view all the approved job requests
+        viewapprovedjobrequests : viewapprovedjobrequests, //Function to view all the approved job requests
+        startjob : startjob,//Function to start job by provider
+        stopjob : stopjob //Function to stop job by provider 
     };
     
 

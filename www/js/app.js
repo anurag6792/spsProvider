@@ -1,4 +1,4 @@
-var app = angular.module('SPSProvider', ['ionic','ionic.service.core','ngMessages','LocalStorageModule','angularMoment']);
+var app = angular.module('SPSProvider', ['ionic','ionic.service.core','ngMessages','LocalStorageModule','angularMoment','ngCordova']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
