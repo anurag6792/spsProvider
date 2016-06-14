@@ -360,3 +360,37 @@
 .viewapprovedservice .card .item-text-wrap span{
     padding: 0 10px;
 }
+/*Start JOb*/
+.startjob{
+    height: 100%;
+}
+.startjob .col{
+    height: 100%;
+    position: relative;
+}
+.startjob .col .jobbutton{
+    width:200px;
+    height: 200px;
+    position: absolute;
+    display: block;
+    background-color: #45DCBB;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    text-align: center;
+}
+.startjob .col .jobbutton p{
+    color: #fff;
+    font-size: 45px;
+    margin-top: 45%;
+}
+.startjob .col .timer{
+    width: 100%;
+    height: 100px;
+}
+.startjob .col .timer p{
+    font-size: 20px;
+}

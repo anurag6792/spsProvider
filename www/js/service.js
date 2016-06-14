@@ -1,4 +1,4 @@
-app.service("userAuth",['$q','$http','localStorageService','$filter',function($q,$http,localStorageService,$filter){
+app.service("userAuth",['$q','$http','localStorageService','$filter','$httpParamSerializer',function($q,$http,localStorageService,$filter,$httpParamSerializer){
     
     // Login API 
     function login(username, password) {

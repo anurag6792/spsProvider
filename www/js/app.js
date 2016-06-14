@@ -116,15 +116,6 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         }
       }
     })
-    .state('app.viewapprovedservices',{
-        url: '/viewapprovedservices/:JobRequestId',
-        cache:false,
-        views: {
-        'sidemenuContent' :{
-          templateUrl: "templates/viewapprovedservices.html"
-        }
-      }
-    })
     .state('app.profile',{
         url: '/profile',
         cache:false,

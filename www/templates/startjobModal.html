@@ -1,0 +1,20 @@
+<ion-modal-view >
+  <ion-header-bar align-title="center" class="common-header">
+    <h1 class="title">Start Job</h1>
+     <button  ng-if="showstart" class="button button-icon icon ion-close" ng-click="modal.hide()"></button>    
+  </ion-header-bar>
+  <ion-content class="padding main-content">
+        <div class="row startjob">
+            <div class="col">
+                <div ng-if="showstop" class="timer">
+                    <p>{{newDateObj | date:'hh:mm:ss'}}</p>
+                   
+                </div>
+                <div class="jobbutton">
+                    <p ng-if="showstart" ng-click="start();">START</p>
+                    <p ng-if="showstop" ng-click="stop();">STOP</p>
+                </div>
+            </div>
+        </div>
+  </ion-content>
+</ion-modal-view>
