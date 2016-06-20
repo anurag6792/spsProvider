@@ -110,7 +110,7 @@ app.service("userAuth",['$q','$http','localStorageService','$filter','$httpParam
         
     };
     //Function to send estimates
-    function sendestimates(JobId,CustomerId,ServiceProviderId,amount,jobrequestid) {
+    function sendestimates(JobId,CustomerId,ServiceProviderId,amount,jobrequestid,comment) {
         console.log("In service send estimates function");
         var deferredObject = $q.defer();
         $http({
@@ -120,7 +120,8 @@ app.service("userAuth",['$q','$http','localStorageService','$filter','$httpParam
                                 "CustomerId": CustomerId,
                                 "ServiceProviderID" : ServiceProviderId,
                                 "ServiceProviderAmount" : amount,
-                                "JobRequestId" : jobrequestid
+                                "JobRequestId" : jobrequestid,
+                                "SPComment" : comment
                            },
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 transformRequest: function(obj) {

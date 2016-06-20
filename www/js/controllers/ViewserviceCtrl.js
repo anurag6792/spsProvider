@@ -54,7 +54,7 @@ app.controller('ViewserviceCtrl',['$scope','$stateParams','localStorageService',
     
     $scope.sendEstimate = function(estimate){
         
-        var estimate = userAuth.sendestimates($scope.jobrequestDetails.JobId,$scope.jobrequestDetails.CustomerId,$scope.jobrequestDetails.ServiceProviderId,estimate.amount,$scope.jobreqid);
+        var estimate = userAuth.sendestimates($scope.jobrequestDetails.JobId,$scope.jobrequestDetails.CustomerId,$scope.jobrequestDetails.ServiceProviderId,estimate.amount,$scope.jobreqid,estimate.comment);
         $scope.show();
          estimate.then(function (response) {
              
